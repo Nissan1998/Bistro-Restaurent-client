@@ -7,9 +7,9 @@ const CenterBanner = () => {
         style={{
           backgroundImage: `url(${bgImage})`,
         }}
-        className="w-full max-w-screen-2xl mx-auto flex justify-center bg-cover items-center"
+        className="w-full bg-fixed max-w-screen-2xl mx-auto flex justify-center bg-cover items-center"
       >
-        <div className="max-w-screen-xl m-20 h-96 text-center bg-white flex flex-col justify-center p-14">
+        <div className="max-w-screen-xl overflow-hidden m-20 h-96 text-center bg-white flex flex-col justify-center p-14">
           <h1 className="card-title font-extrabold text-center  mx-auto mb-5">
             Bistro Boss
           </h1>

@@ -1,4 +1,3 @@
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -54,6 +53,18 @@ const Category = () => {
         <SwiperSlide className="-mt-12">
           <p className="text-4xl text-center font-extrabold">SALADS</p>
           <img src={img5} />
+        </SwiperSlide>
+        <SwiperSlide className="-mt-12">
+          <p className="text-4xl text-center font-extrabold">SALADS</p>
+          <img src={img1} />
+        </SwiperSlide>
+        <SwiperSlide className="-mt-12">
+          <p className="text-4xl text-center font-extrabold">PIZZA</p>
+          <img src={img2} />
+        </SwiperSlide>
+        <SwiperSlide className="-mt-12">
+          <p className="text-4xl text-center font-extrabold">SOUPS</p>
+          <img src={img3} />
         </SwiperSlide>
       </Swiper>
     </div>

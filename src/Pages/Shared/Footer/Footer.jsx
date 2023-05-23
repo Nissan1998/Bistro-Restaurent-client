@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div>
       <footer className="footer p-10 bg-neutral text-neutral-content mt-14">
-        <div>
+        <div className="max-w-screen-xl mx-auto">
           <svg
             width="50"
             height="50"
@@ -23,7 +23,7 @@ const Footer = () => {
             Providing reliable tech since 1992
           </p>
         </div>
-        <div>
+        <div className="max-w-screen-xl mx-auto">
           <span className="footer-title">Social</span>
           <div className="grid grid-flow-col gap-4">
             <a>
