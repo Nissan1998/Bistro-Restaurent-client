@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SectionHeader from "../Shared/SectionHeader/SectionHeader";
 import MenuItem from "../Shared/MenuItemCard/MenuItem";
+import { Link } from "react-router-dom";
 
 const PopularMenu = () => {
   const [foods, setFoods] = useState([]);
@@ -25,6 +26,9 @@ const PopularMenu = () => {
           <MenuItem key={item._id} item={item}></MenuItem>
         ))}
       </div>
+      <Link className="bg-transparent bg-black bg-opacity-30 border-b-4 rounded-lg text-yellow-600 font-bold flex justify-center my-5 w-36 mx-auto btn-outline p-3">
+        View Full Menu
+      </Link>
     </section>
   );
 };

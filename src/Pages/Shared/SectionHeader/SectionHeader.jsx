@@ -5,7 +5,11 @@ const SectionHeader = ({ title1, title, textWhite }) => {
     <div className="max-w-screen-xl mx-auto container my-5">
       <div className={`text-center ${textWhite} `}>
         <p
-          className={textWhite ? "text-white" : "text-yellow-600 w-96 mx-auto"}
+          className={
+            textWhite
+              ? "text-white text-center"
+              : "text-yellow-600 w-96 mx-auto"
+          }
         >
           --- {title1} ---
         </p>
