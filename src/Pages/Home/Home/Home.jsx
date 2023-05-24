@@ -7,8 +7,12 @@ import Featured from "../Fetured/Featured";
 import Testimonials from "../Testimonials/Testimonials";
 import Contact from "../ContactDiv/Contact";
 import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router-dom";
+import useScrollTop from "../../../CustomHook/useScrollTop";
 
 const Home = () => {
+  const { pathName } = useLocation();
+  useScrollTop(pathName);
   return (
     <div>
       <Helmet>
