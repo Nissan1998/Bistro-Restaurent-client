@@ -10,13 +10,12 @@ import useScrollTop from "../../../CustomHook/useScrollTop";
 import { Helmet } from "react-helmet-async";
 
 const Order = () => {
-  const { pathName } = useLocation();
   const categories = ["Salad", "Pizza", "Soup", "Dessert", "Drinks"];
   const { category } = useParams();
   console.log(categories.indexOf(category));
   const initialIndex = categories.indexOf(category);
   console.log(category);
-  useScrollTop(pathName);
+
   const [tabIndex, setIndex] = useState(initialIndex);
   const [menu] = useMenu();
   const drinks = menu.filter((item) => item.category === "drinks");
