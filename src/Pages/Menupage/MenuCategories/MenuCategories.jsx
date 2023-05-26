@@ -16,6 +16,7 @@ const MenuCategories = () => {
   const pizzas = menu.filter((item) => item.category === "pizza");
   const salads = menu.filter((item) => item.category === "salad");
   const soups = menu.filter((item) => item.category === "soup");
+  const drinks = menu.filter((item) => item.category === "drinks");
   return (
     <div>
       <div>
@@ -28,7 +29,7 @@ const MenuCategories = () => {
             <MenuItem key={item._id} item={item}></MenuItem>
           ))}
         </div>
-        <Button>ORDER YOUR FAVORITE FOOD</Button>
+        <Button title={"order"}>ORDER YOUR FAVORITE FOOD</Button>
         <Cover
           bgImg={dessert}
           title={"DESSERT"}
@@ -41,7 +42,7 @@ const MenuCategories = () => {
             <MenuItem key={item._id} item={item}></MenuItem>
           ))}
         </div>
-        <Button>ORDER YOUR FAVORITE DESSERTS</Button>
+        <Button title={"Dessert"}>ORDER YOUR FAVORITE DESSERTS</Button>
         <Cover
           bgImg={pizza}
           subTitle={"The most tested ever of our Restaurant Pizza "}
@@ -52,7 +53,7 @@ const MenuCategories = () => {
             <MenuItem key={item._id} item={item}></MenuItem>
           ))}
         </div>
-        <Button>ORDER YOUR FAVORITE PIZZA</Button>
+        <Button title={"Pizza"}>ORDER YOUR FAVORITE PIZZA</Button>
       </div>
       <Cover
         bgImg={salad}
@@ -64,7 +65,7 @@ const MenuCategories = () => {
           <MenuItem key={item._id} item={item}></MenuItem>
         ))}
       </div>
-      <Button>ORDER YOUR FAVORITE SALADS</Button>
+      <Button title={"Salad"}>ORDER YOUR FAVORITE SALADS</Button>
       <Cover
         bgImg={soup}
         title={"SOUP"}
@@ -77,7 +78,20 @@ const MenuCategories = () => {
           <MenuItem key={item._id} item={item}></MenuItem>
         ))}
       </div>
-      <Button>ORDER YOUR FAVORITE SOUPS</Button>
+      <Button title={"Soup"}>ORDER YOUR FAVORITE SOUPS</Button>
+      <Cover
+        bgImg={soup}
+        title={"Drinks"}
+        subTitle={
+          "Flavoured Soup Which is achieved best reviews from Customers"
+        }
+      ></Cover>
+      <div className="grid md:grid-cols-2 gap-3  max-w-screen-xl mx-auto bg-base-200 p-10">
+        {drinks.map((item) => (
+          <MenuItem key={item._id} item={item}></MenuItem>
+        ))}
+      </div>
+      <Button title={"Drinks"}>ORDER YOUR FAVORITE DRINKS</Button>
     </div>
   );
 };
