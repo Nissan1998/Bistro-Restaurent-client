@@ -8,6 +8,7 @@ import salad from "../../../assets/menu/salad-bg.jpg";
 import soup from "../../../assets/menu/soup-bg.jpg";
 import MenuItem from "../../Shared/MenuItemCard/MenuItem";
 import useMenu from "../../../CustomHook/useMenu";
+import menubg from "../../../assets/menu/menu-bg.png";
 
 const MenuCategories = () => {
   const [menu] = useMenu();
@@ -18,13 +19,22 @@ const MenuCategories = () => {
   const soups = menu.filter((item) => item.category === "soup");
   const drinks = menu.filter((item) => item.category === "drinks");
   return (
-    <div>
+    <div
+      style={{
+        backgroundImage: `url("${menubg}")`,
+      }}
+    >
       <div>
         <SectionHeader
           title={"TODAY'S OFFER"}
           title1={"Don't miss"}
         ></SectionHeader>
-        <div className="grid md:grid-cols-2 gap-3  max-w-screen-xl mx-auto bg-base-200 p-10">
+        <div
+          style={{
+            backgroundImage: `url("${menubg}")`,
+          }}
+          className="grid md:grid-cols-2 gap-3  max-w-screen-xl mx-auto  p-10"
+        >
           {offered.map((item) => (
             <MenuItem key={item._id} item={item}></MenuItem>
           ))}
@@ -37,7 +47,12 @@ const MenuCategories = () => {
             "Very attractive desserts are available here to eat smoothly"
           }
         ></Cover>
-        <div className="grid md:grid-cols-2 gap-3  max-w-screen-xl mx-auto bg-base-200 p-10">
+        <div
+          style={{
+            backgroundImage: `url("${menubg}")`,
+          }}
+          className="grid md:grid-cols-2 gap-3  max-w-screen-xl mx-auto  p-10"
+        >
           {desserts.map((item) => (
             <MenuItem key={item._id} item={item}></MenuItem>
           ))}
@@ -48,7 +63,12 @@ const MenuCategories = () => {
           subTitle={"The most tested ever of our Restaurant Pizza "}
           title={"PIZZA"}
         ></Cover>
-        <div className="grid md:grid-cols-2 gap-3  max-w-screen-xl mx-auto bg-base-200 p-10">
+        <div
+          style={{
+            backgroundImage: `url("${menubg}")`,
+          }}
+          className="grid md:grid-cols-2 gap-3  max-w-screen-xl mx-auto  p-10"
+        >
           {pizzas.map((item) => (
             <MenuItem key={item._id} item={item}></MenuItem>
           ))}
@@ -60,7 +80,12 @@ const MenuCategories = () => {
         subTitle={"The Most famous Salad of Us Check it out the taste"}
         title={"SALAD"}
       ></Cover>
-      <div className="grid md:grid-cols-2 gap-3  max-w-screen-xl mx-auto bg-base-200 p-10">
+      <div
+        style={{
+          backgroundImage: `url("${menubg}")`,
+        }}
+        className="grid md:grid-cols-2 gap-3  max-w-screen-xl mx-auto  p-10"
+      >
         {salads.map((item) => (
           <MenuItem key={item._id} item={item}></MenuItem>
         ))}
@@ -73,7 +98,12 @@ const MenuCategories = () => {
           "Flavoured Soup Which is achieved best reviews from Customers"
         }
       ></Cover>
-      <div className="grid md:grid-cols-2 gap-3  max-w-screen-xl mx-auto bg-base-200 p-10">
+      <div
+        style={{
+          backgroundImage: `url("${menubg}")`,
+        }}
+        className="grid md:grid-cols-2 gap-3  max-w-screen-xl mx-auto  p-10"
+      >
         {soups.map((item) => (
           <MenuItem key={item._id} item={item}></MenuItem>
         ))}
@@ -86,7 +116,12 @@ const MenuCategories = () => {
           "Flavoured Soup Which is achieved best reviews from Customers"
         }
       ></Cover>
-      <div className="grid md:grid-cols-2 gap-3  max-w-screen-xl mx-auto bg-base-200 p-10">
+      <div
+        style={{
+          backgroundImage: `url("${menubg}")`,
+        }}
+        className="grid md:grid-cols-2 gap-3  max-w-screen-xl mx-auto p-10"
+      >
         {drinks.map((item) => (
           <MenuItem key={item._id} item={item}></MenuItem>
         ))}
