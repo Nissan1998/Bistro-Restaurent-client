@@ -8,17 +8,6 @@ const PopularMenu = () => {
   const [menu] = useMenu();
   const popular = menu.filter((item) => item.category === "popular");
 
-  // const [foods, setFoods] = useState([]);
-
-  // // useEffect(() => {
-  //   fetch("menu.json")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       const popularItems = data.filter((item) => item.category === "popular");
-  //       setFoods(popularItems);
-  //     })
-  //     .catch((error) => console.log(error.message));
-  // }, []);
   return (
     <section>
       <SectionHeader
@@ -30,7 +19,10 @@ const PopularMenu = () => {
           <MenuItem key={item._id} item={item}></MenuItem>
         ))}
       </div>
-      <Link className="bg-transparent bg-black bg-opacity-30 border-b-4 rounded-lg text-yellow-600 font-bold flex justify-center my-5 w-36 mx-auto btn-outline p-3">
+      <Link
+        to="/order/Salad"
+        className="bg-transparent bg-black bg-opacity-30 border-b-4 rounded-lg text-yellow-600 font-bold flex justify-center my-5 w-36 mx-auto btn-outline p-3"
+      >
         View Full Menu
       </Link>
     </section>
