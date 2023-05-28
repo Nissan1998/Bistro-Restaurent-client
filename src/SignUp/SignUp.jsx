@@ -1,6 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import bgwood from "../assets/reservation/wood-grain-pattern-gray1x.png";
+import { Helmet } from "react-helmet-async";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const SignUp = () => {
   const {
@@ -8,13 +12,42 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+
+  const onSubmit = (data) => {
+    console.log(data);
+    createUser(data.email, data.password).then((res) => {
+      const loggedUser = res.user;
+      updateUserProfile(data.name, data.photo)
+        .then((res) => {
+          console.log(res.user);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+      console.log(loggedUser);
+    });
+  };
   return (
     <div>
+      <Helmet>
+        <title>Bistro-Boss | SignUp</title>
+      </Helmet>
       <div>
-        <div className="flex justify-center items-center h-full bg-gray-300 ">
-          <div className="w-full max-w-lg mt-5">
+        <div
+          style={{
+            backgroundImage: `url(${bgwood})`,
+          }}
+          className="flex justify-center items-center h-full  "
+        >
+          <div
+            className="w-full max-w-lg mt-5
+           "
+          >
             <form
+              style={{
+                backgroundImage: `url(${bgwood})`,
+              }}
               onSubmit={handleSubmit(onSubmit)}
               className="bg-white rounded-xl shadow-2xl px-8 pt-6 pb-8 mb-4"
             >
@@ -37,9 +70,8 @@ const SignUp = () => {
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   type="text"
                   id="name"
-                  {...register("name")}
+                  {...register("name", { required: true })}
                   name="name"
-                  required
                   placeholder="Enter your Name"
                 />
               </div>
@@ -52,9 +84,10 @@ const SignUp = () => {
                 </label>
                 <input
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="phot"
+                  id="photo"
                   type="text"
-                  {...register("photo")}
+                  {...register("photo", { required: true })}
+                  // {...(errors.photo && <span>This field is required</span>)}
                   name="photo"
                   placeholder="Enter your Photo URL"
                 />
@@ -70,7 +103,6 @@ const SignUp = () => {
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="email"
                   type="email"
-                  required
                   {...register("email")}
                   name="email"
                   placeholder="Enter your email"
@@ -87,18 +119,18 @@ const SignUp = () => {
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="password"
                   type="password"
-                  required
                   {...register("password")}
                   name="password"
                   placeholder="Enter your password"
                 />
               </div>
               <div className="text-center">
-                <button
-                  className="text-center bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  type="submit"
-                >
-                  Register
+                <button>
+                  <input
+                    className="text-center cursor-pointer bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="submit"
+                    value="SignUp"
+                  />
                 </button>
               </div>
               <div className="mx-auto mt-2 w-2/3">

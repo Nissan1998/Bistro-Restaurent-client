@@ -7,11 +7,15 @@ import {
 } from "react-simple-captcha";
 import bgwood from "../../assets/reservation/wood-grain-pattern-gray1x.png";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const captchaRef = useRef(null);
   const [disable, setDisable] = useState(true);
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   const { signInUser } = useContext(AuthContext);
 
@@ -28,15 +32,16 @@ const Login = () => {
     }
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = (event) => {
     event.preventDefault();
-    const form = e.target;
+    const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
     signInUser(email, password)
       .then((result) => {
         const user = result.user;
+        navigate(from, { replace: true });
         console.log(user);
       })
       .then((err) => {
@@ -50,6 +55,9 @@ const Login = () => {
       }}
       className="hero min-h-screen bg-base-200"
     >
+      <Helmet>
+        <title>Bistro-Boss | Login</title>
+      </Helmet>
       <div className="hero-content md:flex flex-col md:flex-row">
         <div className="text-center md:w-1/2 lg:text-left">
           <h1 className="text-5xl font-bold">Login now!</h1>
@@ -107,12 +115,12 @@ const Login = () => {
                 required
                 className="input input-bordered"
               />
-              <button
+              <p
                 onClick={handleValidateCaptcha}
                 className="btn btn-outline btn-xs mt-2 "
               >
                 validate
-              </button>
+              </p>
             </div>
             <div className="form-control mt-6">
               <input
