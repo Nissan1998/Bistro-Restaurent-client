@@ -9,6 +9,8 @@ import { useLocation, useParams } from "react-router-dom";
 import useScrollTop from "../../../CustomHook/useScrollTop";
 import { Helmet } from "react-helmet-async";
 
+// TODO:implement pagination here
+
 const Order = () => {
   const categories = ["Salad", "Pizza", "Soup", "Dessert", "Drinks"];
   const { category } = useParams();
