@@ -9,6 +9,7 @@ import bgwood from "../../assets/reservation/wood-grain-pattern-gray1x.png";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
   const captchaRef = useRef(null);
@@ -138,6 +139,7 @@ const Login = () => {
                 </Link>
               </small>
             </p>
+            <SocialLogin></SocialLogin>
           </form>
         </div>
       </div>

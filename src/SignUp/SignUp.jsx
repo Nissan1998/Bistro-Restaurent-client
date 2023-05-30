@@ -1,12 +1,15 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import bgwood from "../assets/reservation/wood-grain-pattern-gray1x.png";
 import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
+import SocialLogin from "../Pages/Shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -20,6 +23,27 @@ const SignUp = () => {
       const loggedUser = res.user;
       updateUserProfile(data.name, data.photo)
         .then((res) => {
+          const savesUser = { name: data.name, email: data.email };
+          fetch(`http://localhost:5000/users`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(savesUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "user Created Successfully",
+                  timer: 2000,
+                });
+
+                navigate("/");
+              }
+            });
           console.log(res.user);
         })
         .catch((err) => {
@@ -139,17 +163,8 @@ const SignUp = () => {
                   <button className="btn-link">Login....</button>
                 </Link>
               </div>
-              <div className="divider">OR</div>
-              <div className=" w-32 mx-auto">
-                <span>Continue with </span>
-                <button>
-                  <img
-                    style={{ width: 25 }}
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/706px-Google_%22G%22_Logo.svg.png"
-                    alt=""
-                  />
-                </button>
-              </div>
+
+              <SocialLogin></SocialLogin>
             </form>
           </div>
         </div>
