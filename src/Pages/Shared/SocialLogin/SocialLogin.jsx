@@ -1,12 +1,10 @@
 import React, { useContext } from "react";
-import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 
 const SocialLogin = () => {
-  const navigate = useNavigate();
   const location = useLocation();
+  const navigate = useNavigate();
   let from = location.state?.from?.pathname || "/";
 
   const { googleSignIn } = useContext(AuthContext);
@@ -14,6 +12,7 @@ const SocialLogin = () => {
     googleSignIn()
       .then((res) => {
         const loggedUser = res.user;
+        navigate(from, { replace: true });
         const savesUser = {
           name: loggedUser.displayName,
           email: loggedUser.email,
