@@ -2,13 +2,49 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { FaTrash, FaUserShield } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const AllUsers = () => {
   const { data: users = [], refetch } = useQuery(["users"], async () => {
     const res = await fetch("http://localhost:5000/users");
     return res.json();
   });
-  const handleDelete = (user) => {};
+  const handleDelete = (user) => {
+    const Url = `http://localhost:5000/users/${user._id}`;
+    fetch(Url, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+
+        refetch();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "The User has been deleted",
+          timer: 1500,
+        });
+      });
+  };
+  const handleMakeAdmin = (id) => {
+    const URL = `http://localhost:5000/users/admin/${id}`;
+    fetch(URL, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Made Admin Successfully",
+            timer: 1500,
+          });
+        }
+      });
+  };
   return (
     <div className="w-full">
       <Helmet>
@@ -38,8 +74,13 @@ const AllUsers = () => {
                   <th>{index + 1}</th>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
-                  <td className=" mx-auto border-2 mt-1 border-yellow-600 w-12 flex justify-center align-middle items-center text-yellow-600">
-                    {user.role === "admin" ? "Admin" : <FaUserShield />}
+                  <td>
+                    <button
+                      onClick={() => handleMakeAdmin(user._id)}
+                      className="btn text-red-600 btn-ghost btn-xs hover:btn-warning "
+                    >
+                      {user.role === "admin" ? "Admin" : <FaUserShield />}
+                    </button>
                   </td>
                   <td>
                     <button
