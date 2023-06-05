@@ -39,7 +39,7 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const logOUt = () => {
+  const logOut = () => {
     setLoading(true);
     return signOut(auth);
   };
@@ -65,12 +65,11 @@ const AuthProvider = ({ children }) => {
           .then((data) => {
             console.log(data);
             localStorage.setItem("access-token", data.data);
+            setLoading(false);
           });
       } else {
         localStorage.removeItem("access-token");
       }
-
-      setLoading(false);
     });
     return () => {
       return unsubscribe();
@@ -82,7 +81,7 @@ const AuthProvider = ({ children }) => {
     loading,
     createUser,
     signInUser,
-    logOUt,
+    logOut,
     updateUserProfile,
     googleSignIn,
   };

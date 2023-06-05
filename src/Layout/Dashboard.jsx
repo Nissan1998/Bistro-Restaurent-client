@@ -11,11 +11,15 @@ import {
 import { FiMenu } from "react-icons/fi";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../CustomHook/useCart";
+import useAdmin from "../CustomHook/useAdmin";
 
 const Dashboard = () => {
   const [cart] = useCart();
   // ToDo:Load from the server to have dynamic isAdmin based on Data
-  const isAdmin = true;
+  // const isAdmin = true;
+  const [isAdmin] = useAdmin();
+  console.log(isAdmin);
+
   return (
     <div>
       <div className="drawer drawer-mobile ">

@@ -5,7 +5,7 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 import useCart from "../../../CustomHook/useCart";
 
 const NavBar = () => {
-  const { user, logOUt } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const [cart] = useCart();
   const navOptions = (
     <>
@@ -30,8 +30,8 @@ const NavBar = () => {
         </Link>
       </li>
       {user ? (
-        <li onClick={logOUt}>
-          <Link to="/">LOGOUT</Link>
+        <li onClick={logOut}>
+          <Link to="/">logOut</Link>
         </li>
       ) : (
         <li>
